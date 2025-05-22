@@ -1,8 +1,8 @@
-CREATE DATABASE fast;
+#CREATE DATABASE fast;
 USE fast;
 
 CREATE TABLE  users (
-    id INT primary key auto_increment,
+    id INT primary key auto_increment not null ,
     name VARCHAR(50),
     nationalCode varchar(8)
 );
@@ -17,10 +17,11 @@ CREATE TABLE students (
 CREATE TABLE professor (
     id INT primary key,
     personalID VARCHAR(8) UNIQUE NOT NULL,
-    departeman VARCHAR(50) not null,
-    sienceRank VARCHAR(50) not null,
+    department VARCHAR(50) NOT NULL,
+    scienceRank VARCHAR(50) NOT NULL,
     FOREIGN KEY (id) REFERENCES users(id)
 );
+
 
 CREATE TABLE food (
     id INT primary key auto_increment,
@@ -29,15 +30,14 @@ CREATE TABLE food (
     day VARCHAR(50) not null
 );
 
-CREATE TABLE orders
-(
-    orederID INT primary key auto_increment,
-    userID   INT         not null,
-    foodID   INT         not null,
-    day      VARCHAR(50) not null,
-    FOREIGN KEY (userID) REFERENCES users (id),
-    FOREIGN KEY (foodID) REFERENCES food (id)
-)
+CREATE TABLE orders (
+    orderID INT PRIMARY KEY AUTO_INCREMENT,
+    userID  INT NOT NULL,
+    foodID  INT NOT NULL,
+    day     VARCHAR(50) NOT NULL,
+    FOREIGN KEY (userID) REFERENCES users(id),
+    FOREIGN KEY (foodID) REFERENCES food(id)
+);
 
 
 
